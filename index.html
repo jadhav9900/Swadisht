@@ -1,239 +1,536 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Swadisht Restaurant</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWADISHT Restaurant</title>
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-scroll-behavior:smooth;
-}
-
-body{
-background:#111;
-color:#fff;
-}
-
-nav{
-position:sticky;
-top:0;
-background:#000;
-padding:15px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-border-bottom:2px solid #D4AF37;
-z-index:1000;
-}
-
-.logo{
-color:#D4AF37;
-font-size:24px;
-font-weight:bold;
-}
-
-nav a{
-color:#fff;
-text-decoration:none;
-margin-left:15px;
-}
-
-.hero{
-height:80vh;
-background:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200') center/cover;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-}
-
-.overlay{
-background:rgba(0,0,0,.65);
-padding:40px;
-border-radius:10px;
-}
-
-.hero h1{
-font-size:48px;
-color:#D4AF37;
-}
-
-.btn{
-display:inline-block;
-background:#D4AF37;
-color:#000;
-padding:12px 22px;
-margin-top:15px;
-border-radius:5px;
-text-decoration:none;
-font-weight:bold;
-}
-
-.section{
-padding:60px 20px;
-max-width:1200px;
-margin:auto;
-}
-
-.section h2{
-text-align:center;
-margin-bottom:30px;
-color:#D4AF37;
-}
-
-.menu-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.card{
-background:#222;
-border-radius:10px;
-overflow:hidden;
-}
-
-.card img{
-width:100%;
-height:180px;
-object-fit:cover;
-}
-
-.card-content{
-padding:15px;
-text-align:center;
-}
-
-.price{
-color:#D4AF37;
-font-size:20px;
-margin-top:10px;
-}
-
-.contact{
-text-align:center;
-line-height:2;
-}
-
-iframe{
-width:100%;
-height:350px;
-border:none;
-border-radius:10px;
-margin-top:20px;
-}
-
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:#fff;
-padding:15px 20px;
-border-radius:50px;
-text-decoration:none;
-font-weight:bold;
-}
-
-footer{
-background:#000;
-text-align:center;
-padding:20px;
-margin-top:30px;
-}
-</style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<nav>
-<div class="logo">🍗 SWADISHT</div>
-
-<div>
-<a href="#home">Home</a>
-<a href="#menu">Menu</a>
-<a href="#contact">Contact</a>
+<!-- for animation added extra code -->
+<div id="toast">
+✅ Item Added To Cart
 </div>
+
+
+<!-- Navbar -->
+<nav>
+    <div class="logo">🍗 SWADISHT</div>
+
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#featured">Featured</a>
+        <a href="#menu">Menu</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <div class="cart-btn" onclick="toggleCart()">
+        🛒 Cart (<span id="cartCount">0</span>)
+    </div>
 </nav>
 
+<!-- Hero -->
 <section class="hero" id="home">
-<div class="overlay">
-<h1>SWADISHT</h1>
-<p>Authentic Non-Veg Taste in Punawale</p>
-<a href="#menu" class="btn">View Menu</a>
-</div>
+
+    <div class="overlay">
+
+        <h1>SWADISHT</h1>
+
+        <p>
+            Premium Non-Veg Restaurant In Punawale
+        </p>
+
+        <a href="#menu" class="btn">
+            Explore Menu
+        </a>
+
+    </div>
+
 </section>
 
+<section class="special-section">
+
+<h2>🔥 Today's Special</h2>
+
+<div class="special-card">
+
+<h3 id="specialName"></h3>
+
+<p class="special-price" id="specialPrice"></p>
+
+<p>
+20% OFF Today
+</p>
+
+<a href="#menu" class="btn">
+Order Now
+</a>
+
+</div>
+
+</section>
+
+<section class="stats-section">
+
+<div class="stat-box">
+<h3>5000+</h3>
+<p>Happy Customers</p>
+</div>
+
+<div class="stat-box">
+<h3>20+</h3>
+<p>Menu Items</p>
+</div>
+
+<div class="stat-box">
+<h3>4.8★</h3>
+<p>Average Rating</p>
+</div>
+
+<div class="stat-box">
+<h3>7 Days</h3>
+<p>Open Every Week</p>
+</div>
+
+</section>
+
+
+<!-- Featured Dishes -->
+<section class="section" id="featured">
+
+    <h2>Featured Dishes</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1563379091339-03246963d29b?q=80&w=1200&auto=format&fit=crop">
+            <div class="card-content">
+                <span>
+Mutton Gawakadi Thali
+<span class="badge chef">
+CHEF SPECIAL
+</span>
+</span>
+                <p class="price">₹599</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?q=80&w=1200&auto=format&fit=crop">
+            <div class="card-content">
+                <h3>Chicken Gawakadi Thali</h3>
+                <p class="price">₹449</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1200&auto=format&fit=crop">
+            <div class="card-content">
+                <span>
+Chicken Pizza
+<span class="badge hot">
+HOT
+</span>
+</span>
+                <p class="price">₹350</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+<h2>Food Gallery</h2>
+
+<div class="gallery">
+
+<img src="https://images.unsplash.com/photo-1563379091339-03246963d29b?q=80&w=1200&auto=format&fit=crop">
+
+<img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1200&auto=format&fit=crop">
+
+<img src="https://images.unsplash.com/photo-1604908176997-43198c5f6f63?q=80&w=1200&auto=format&fit=crop">
+
+<img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop">
+
+<img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop">
+
+<img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+</section>
+
+<!-- Menu -->
 <section class="section" id="menu">
-<h2>Popular Dishes</h2>
 
-<div class="menu-grid">
+    <h2>Our Menu</h2>
+	
+	<p id="menuCount"></p>
+	
+	<div class="menu-tools">
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1563379091339-03246963d29b?w=800">
-<div class="card-content">
-<h3>Chicken Dum Biryani</h3>
-<p class="price">₹250</p>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800">
-<div class="card-content">
-<h3>Chicken Pizza</h3>
-<p class="price">₹350</p>
-</div>
+<input
+type="text"
+id="menuSearch"
+placeholder="🔍 Search Menu..."
+onkeyup="filterMenu()">
+<p id="searchResult"></p>
 </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1604908176997-43198c5f6f63?w=800">
-<div class="card-content">
-<h3>Chicken Lollipop</h3>
-<p class="price">₹180</p>
-</div>
-</div>
+<div class="filters">
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800">
-<div class="card-content">
-<h3>Mutton Biryani</h3>
-<p class="price">₹320</p>
-</div>
-</div>
+<button onclick="showCategory('all')">All</button>
+
+<button onclick="showCategory('mutton')">
+Mutton
+</button>
+
+<button onclick="showCategory('chicken')">
+Chicken
+</button>
+
+<button onclick="showCategory('biryani')">
+Biryani
+</button>
+
+<button onclick="showCategory('chinese')">
+Chinese
+</button>
+
+<button onclick="showCategory('pizza')">
+Pizza
+</button>
 
 </div>
+	
+
+    <!-- <div class="menu-category"> --><div class="menu-category" data-category="mutton">
+
+        <h3>🍖 Mutton Thali</h3>
+
+        <div class="menu-item">
+            <span>Mutton Gawakadi Thali</span>
+            <span>₹599</span>
+            <button onclick="addToCart('Mutton Gawakadi Thali',599)">Add</button>
+        </div>
+
+        <div class="menu-item">
+            <span>Mutton Special Thali</span>
+            <span>₹499</span>
+            <button onclick="addToCart('Mutton Special Thali',499)">Add</button>
+        </div>
+
+        <div class="menu-item">
+            <span>Mutton Thali</span>
+            <span>₹379</span>
+            <button onclick="addToCart('Mutton Thali',379)">Add</button>
+        </div>
+
+    </div>
+
+    <!-- <div class="menu-category"> --> <div class="menu-category" data-category="chicken">
+
+        <h3>🍗 Chicken Thali</h3> 
+
+        <div class="menu-item">
+            <span>Chicken Gawakadi Thali</span>
+            <span>₹449</span>
+            <button onclick="addToCart('Chicken Gawakadi Thali',449)">Add</button>
+        </div>
+
+        <div class="menu-item">
+            <span>Chicken Special Thali</span>
+            <span>₹379</span>
+            <button onclick="addToCart('Chicken Special Thali',379)">Add</button>
+        </div>
+
+        <div class="menu-item">
+            <span>Chicken Thali</span>
+            <span>₹299</span>
+            <button onclick="addToCart('Chicken Thali',299)">Add</button>
+        </div>
+
+    </div>
+
+    <!-- <div class="menu-category"> --><div class="menu-category" data-category="biryani">
+
+        <h3>🍛 Biryani</h3>
+
+        <div class="menu-item">
+           <span>
+Chicken Dum Biryani
+<span class="badge bestseller">
+BESTSELLER
+</span>
+</span>
+            <span>₹250</span>
+            <button onclick="addToCart('Chicken Dum Biryani',250)">Add</button>
+        </div>
+
+        <div class="menu-item">
+            <span>Chicken Tikka Biryani</span>
+            <span>₹280</span>
+            <button onclick="addToCart('Chicken Tikka Biryani',280)">Add</button>
+        </div>
+
+        <div class="menu-item">
+            <span>Mutton Biryani</span>
+            <span>₹320</span>
+            <button onclick="addToCart('Mutton Biryani',320)">Add</button>
+        </div>
+
+    </div>
+
+    <!-- <div class="menu-category"> --><div class="menu-category" data-category="chinese">
+
+        <h3>🍜 Chinese</h3>
+
+        <div class="menu-item">
+            <span>Chicken Noodles</span>
+            <span>₹180</span>
+            <button onclick="addToCart('Chicken Noodles',180)">Add</button>
+        </div>
+
+        <div class="menu-item">
+            <span>Chicken Fried Rice</span>
+            <span>₹190</span>
+            <button onclick="addToCart('Chicken Fried Rice',190)">Add</button>
+        </div>
+
+    </div>
+
+    <!-- <div class="menu-category"> --><div class="menu-category" data-category="pizza">
+
+        <h3>🍕 Pizza</h3>
+
+        <div class="menu-item">
+            <span>Chicken Pizza</span>
+            <span>₹350</span>
+            <button onclick="addToCart('Chicken Pizza',350)">Add</button>
+        </div>
+
+    </div>
+
 </section>
 
+<!-- Reviews -->
+<section class="section" id="reviews">
+
+    <h2>Customer Reviews</h2>
+
+    <div class="review-grid">
+
+        <div class="review">
+            ⭐⭐⭐⭐⭐
+            <p>Best Non-Veg food in Punawale.</p>
+            <b>- Rahul</b>
+        </div>
+
+        <div class="review">
+            ⭐⭐⭐⭐⭐
+            <p>Amazing taste and quick service.</p>
+            <b>- Amit</b>
+        </div>
+
+        <div class="review">
+            ⭐⭐⭐⭐⭐
+            <p>Loved the Chicken Pizza.</p>
+            <b>- Sneha</b>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Open Hr -->
+<section class="section">
+
+<h2>Opening Hours</h2>
+
+<div class="hours-box">
+
+<div>
+<h3>🕘 Timings</h3>
+<p>Mon - Sun</p>
+<p>09:00 AM - 11:00 PM</p>
+</div>
+
+<!-- Removed temprory  
+
+<div>
+<h3>🍽 Services</h3>
+<p> ✅ Dine-In</p>
+<p> ✅ Takeaway</p>
+<p> ✅ Home Delivery</p>
+</div>
+
+</div>
+
+-->
+
+
+<div>
+<p class="service-item">Dine-In</p>
+<p class="service-item">Takeaway</p>
+<p class="service-item">Home Delivery</p>
+</div>
+
+</div>
+
+
+<!-- Removed temprory
+<div>
+<p><span class="tick">✅</span> Dine-In</p>
+<p><span class="tick">✅</span> Takeaway</p>
+<p><span class="tick">✅</span> Home Delivery</p>
+</div>
+
+</div>
+-->
+
+
+</section>
+
+
+
+
+
+
+
+<!-- Contact -->
 <section class="section" id="contact">
-<h2>Contact Us</h2>
 
-<div class="contact">
-<p>📞 9923095522</p>
-<p>📱 WhatsApp: 9923095522</p>
-<p>✉️ swadisht@gmail.com</p>
-<p>📍 205 Atulya Nirman, Kate Chowk, Punawale, Pune</p>
-<p>🕘 09:00 AM - 11:00 PM</p>
-</div>
+    <h2>Contact Us</h2>
 
-<iframe
-src="https://maps.google.com/maps?q=Kate%20Wasti%20Punawale&t=&z=13&ie=UTF8&iwloc=&output=embed">
-</iframe>
+    <div class="contact">
+
+        <p>📞 9923095522</p>
+        <p>📱 WhatsApp: 9923095522</p>
+        <p>✉️ swadisht@gmail.com</p>
+
+        <p>
+            📍 205 Atulya Nirman, Kate Chowk,
+            Punawale, Pune - 411033
+        </p>
+
+    </div>
 
 </section>
 
+<!-- Cart Sidebar -->
+<div class="cart-sidebar" id="cartSidebar">
+
+    <div class="cart-header">
+
+        <h2>Your Cart</h2>
+
+        <button
+        class="close-cart"
+        onclick="toggleCart()">
+        ✖
+        </button>
+
+    </div>
+    <div id="cartItems"></div>
+
+    <h3>Total: ₹<span id="cartTotal">0</span></h3>
+
+<!-- New -->
+
+<button
+class="clear-cart-btn"
+onclick="clearCart()">
+🗑 Clear Cart
+</button>
+
+
+    <input type="text" id="customerName" placeholder="Your Name">
+
+    <input type="text" id="customerMobile" placeholder="Mobile Number">
+
+    <textarea id="customerAddress"
+        placeholder="Delivery Address"></textarea>
+		<textarea
+id="customerNotes"
+placeholder="Special Instructions">
+</textarea>
+
+<h3>Payment Method</h3>
+
+<div class="payment-options">
+
+<label>
+<input
+type="radio"
+name="payment"
+value="Cash On Delivery"
+checked>
+Cash On Delivery
+</label>
+
+<label>
+<input
+type="radio"
+name="payment"
+value="Pay At Restaurant">
+Pay At Restaurant
+</label>
+
+<label>
+<input
+type="radio"
+name="payment"
+value="UPI (Coming Soon)">
+UPI (Coming Soon)
+</label>
+
+</div>
+
+
+
+    <button class="checkout-btn"
+        onclick="placeWhatsAppOrder()">
+        Order on WhatsApp
+    </button>
+
+</div>
+
+<!-- WhatsApp Floating -->
 <a class="whatsapp"
-href="https://wa.me/919999999999"
+href="https://wa.me/919923095522"
 target="_blank">
 WhatsApp
 </a>
 
+<!-- Back To Top Button -->
+
+<button
+id="topBtn"
+onclick="scrollToTop()">
+⬆
+</button>
+
+
+
 <footer>
-© 2026 SWADISHT Restaurant
+
+    <h3>SWADISHT</h3>
+
+    <p>
+        Premium Non-Veg Restaurant
+    </p>
+
+    <p>
+        © 2026 SWADISHT Restaurant
+    </p>
+
 </footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
